@@ -5,11 +5,12 @@ class Game{
         this.blackPixel = [];
     }
 
-    ajouterPixel(x, y){
-        blackPixel.push(x+y*width);
+    ajouterPixel(antPos){
+        if(antPos in this.blackPixel) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
+        else this.blackPixel.push(antPos);
     }
 
-    returnCase(antPos){
+    returnColor(antPos){
         if(antPos in blackPixel) return false;
         else return true;
     }

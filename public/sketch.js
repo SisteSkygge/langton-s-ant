@@ -9,6 +9,6 @@ function start_ant(){
     });
 
     socket.on('ANT_M', function(message){
-        game.ajouterPixel();
+        game.ajouterPixel(message);
     });
 }
