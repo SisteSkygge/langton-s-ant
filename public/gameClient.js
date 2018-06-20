@@ -5,15 +5,16 @@ class Game{
         this.blackPixel = [];
     }
 
-    ajouterPixel(x, y){
-        blackPixel.push(x+y*width);
+    ajouterPixel(antPos){
+        if(antPos in this.blackPixel) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
+        else this.blackPixel.push(antPos);
     }
 
     loadMap(data){
         /*
             Charge la carte envoyé par le serveur
-        
         */
-       this.blackPixel.push("nothing");
+       data = data.split(',');
+       for(var i=0;i<data.length;i++) this.ajouterPixel(data);
     }
 }

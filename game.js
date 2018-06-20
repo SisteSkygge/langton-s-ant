@@ -20,7 +20,7 @@ class Game{
             Charge la carte envoyé par le serveur
         
         */
-       return null;
+       return this.blackPixel.toString();
     }
 
     getLastPixel(){
