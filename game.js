@@ -14,11 +14,19 @@ class Game{
         else return true;
     }
 
-    loadMap(data){
+    exportMap(){
         /*
             Charge la carte envoyé par le serveur
         
         */
-       this.blackPixel.push("nothing");
+       return null;
+    }
+
+    getLastPixel(){
+        //retourne le dernier pixel de la liste AKA le dernier rajouter
+        if(this.blackPixel.length>0) return null;
+        else return this.blackPixel[this.blackPixel.length-1];
     }
 }
+
+module.exports = Game;

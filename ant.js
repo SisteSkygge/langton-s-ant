@@ -50,3 +50,5 @@ class Ant{
         return this.x+this.y*this.screenWidth;
     }
 }
+
+module.exports = Ant;
