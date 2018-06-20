@@ -1,0 +1,10 @@
+{
+    "name":"Online langton's ant",
+    "description":"Fait jouer langton's ant sur un serveur et l'affiche au utilisateur",
+    "version":"0.0.0",
+    "dependencies": {
+        "express":"~4.16.3",
+        "socket.io":"~2.1.1"
+    },
+    "author":"Marco"
+}
