@@ -1,33 +1,3 @@
-function start_ant(){
-    //Envoie un signal au serveur pour lui dire d'envoyer la carte du jeu et les actions de la fourmis et active la boucle principale
-    const socket = io.connect('http://176.143.194.216:8080');
-}
-
-class Game{
-    constructor(height, width){
-        this.height = height;
-        this.width = width;
-        this.blackPixel = [];
-    }
-
-    ajouterPixel(x, y){
-        blackPixel.push(x+y*width);
-    }
-
-    returnCase(antPos){
-        if(antPos in blackPixel) return false;
-        else return true;
-    }
-
-    loadMap(data){
-        /*
-            Charge la carte envoyé par le serveur
-        
-        */
-       this.blackPixel.push("nothing");
-    }
-}
-
 class Ant{
     constructor(startX, startY, screenWidth, screenHeight){
         this.x = startX;
