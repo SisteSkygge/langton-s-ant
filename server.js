@@ -23,18 +23,18 @@ app.get('/p5/p5.min.js', function(req, res){
 
 serveur.listen(8080);
 
-var game = new Game(100,100);
+var game = new Game(400,400);
 var ant = new Ant(game.width/2,game.height/2,game.width,game.height);
 
 setInterval(function(){
     //Fait avancer la partie
-    for(var i=0;i<25;i++){
-        var antPos = ant.translatePos();
-        var caseColor = game.returnColor(antPos);
-        ant.deplacer(caseColor);
-        game.ajouterPixel(antPos);
-    }
-}, 1000/30);
+    var antPos = ant.translatePos();
+    var caseColor = game.returnColor(antPos);
+    ant.deplacer(caseColor);
+    game.ajouterPixel(antPos);
+    io.sockets.emit("ANT_M", antPos);
+    
+}, 1000/500);
 
 io.on('connection', function(socket){
     socket.on('S_DATA', function(){

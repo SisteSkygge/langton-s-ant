@@ -15,7 +15,6 @@ class Ant{
             caseActuel false -> case noir
             caseActuel true -> case blanche
         */
-        console.log(caseActuel);
         if(caseActuel==false){
             //tourne de 90° vers la gauche
             this.direction += 1
