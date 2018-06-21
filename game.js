@@ -6,12 +6,12 @@ class Game{
     }
 
     ajouterPixel(antPos){
-        if(antPos in this.blackPixel) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
+        if(this.blackPixel.indexOf(parseInt(antPos))!=-1) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
         else this.blackPixel.push(antPos);
     }
 
     returnColor(antPos){
-        if(antPos in this.blackPixel) return false;
+        if(this.blackPixel.indexOf(parseInt(antPos))!=-1) return false;
         else return true;
     }
 

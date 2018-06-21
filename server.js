@@ -31,5 +31,7 @@ setInterval(function(){
     ant.deplacer(caseColor);
     game.ajouterPixel(antPos);
     io.sockets.emit("ANT_M", game.getLastPixel());
-    console.log(game.getLastPixel());
+    //console.log(game.getLastPixel());
+    //console.log(caseColor);
+    //console.log(game.exportMap());
 }, 1000/30);
