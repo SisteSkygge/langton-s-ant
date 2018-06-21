@@ -28,6 +28,10 @@ class Game{
         if(this.blackPixel.length<=0) return null;
         else return this.blackPixel[this.blackPixel.length-1];
     }
+
+    getSize(){
+        return `${this.width},${this.height}`;
+    }
 }
 
 module.exports = Game;

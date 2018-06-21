@@ -7,19 +7,21 @@ var Ant = require('./ant.js');
 var Game = require('./game.js');
 
 app.use(express.static('p5'));
+app.use(express.static('public'));
 
 app.get('/', function(req, res){
-    res.sendFile(__dirname+"public/index.html");
+    res.status(200);
+    res.set({'Content-type':'text/plain'});
+    res.sendFile(__dirname+"/public/index.html");
+});
+
+app.get('/p5/p5.min.js', function(req, res){
+    res.set({'Content-type':'text/javascript'});
+    res.status(200);
+    res.sendFile(__dirname+'/p5/p5.min.js');
 });
 
 serveur.listen(8080);
-
-io.on('connection', function(socket){
-    socket.on('S_DATA', function(){
-        //On renvoie la carte du jeu
-        socket.emit("R_DATA", game.exportMap());
-    });
-});
 
 var game = new Game(640,640);
 var ant = new Ant(320,320,640,640);
@@ -35,3 +37,18 @@ setInterval(function(){
     //console.log(caseColor);
     //console.log(game.exportMap());
 }, 1000/30);
+
+io.on('connection', function(socket){
+    socket.on('S_DATA', function(){
+        //On renvoie la carte du jeu
+        socket.emit("R_DATA", game.exportMap());
+    });
+    socket.on('S_SIZE', function(){
+        //on envoie la taille de l ecran de jeu
+        socket.emit("R_SIZE", game.getSize());
+        //console.log(game.getSize());
+    });
+});
+
+
+
