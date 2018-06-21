@@ -23,19 +23,18 @@ app.get('/p5/p5.min.js', function(req, res){
 
 serveur.listen(8080);
 
-var game = new Game(640,640);
-var ant = new Ant(320,320,640,640);
+var game = new Game(100,100);
+var ant = new Ant(game.width/2,game.height/2,game.width,game.height);
 
 setInterval(function(){
     //Fait avancer la partie
-    var antPos = ant.translatePos();
-    var caseColor = game.returnColor(antPos);
-    ant.deplacer(caseColor);
-    game.ajouterPixel(antPos);
-    io.sockets.emit("ANT_M", game.getLastPixel());
-    //console.log(game.getLastPixel());
-    //console.log(caseColor);
-    //console.log(game.exportMap());
+    for(var i=0;i<100;i++){
+        var antPos = ant.translatePos();
+        var caseColor = game.returnColor(antPos);
+        ant.deplacer(caseColor);
+        game.ajouterPixel(antPos);
+        io.sockets.emit("ANT_M", game.getLastPixel());
+    }
 }, 1000/30);
 
 io.on('connection', function(socket){
@@ -49,6 +48,3 @@ io.on('connection', function(socket){
         //console.log(game.getSize());
     });
 });
-
-
-

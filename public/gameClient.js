@@ -6,7 +6,7 @@ class Game{
     }
 
     ajouterPixel(antPos){
-        if(antPos in this.blackPixel) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
+        if(this.blackPixel.indexOf(parseInt(antPos))!=-1) this.blackPixel.splice(this.blackPixel.indexOf(antPos), 1);
         else this.blackPixel.push(antPos);
     }
 
@@ -15,6 +15,6 @@ class Game{
             Charge la carte envoyé par le serveur
         */
        data = data.split(',');
-       for(var i=0;i<data.length;i++) this.ajouterPixel(data);
+       for(var i=0;i<data.length;i++) this.ajouterPixel(data[i]);
     }
 }
