@@ -24,6 +24,7 @@ function start_ant(){
     socket.on('ANT_M', function(message){
         if(game!==undefined){
             game.ajouterPixel(message);
+            console.log(message);
         }
     });
 }
