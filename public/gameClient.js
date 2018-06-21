@@ -1,4 +1,4 @@
-class Game{
+var Game = class{
     constructor(height, width){
         this.height = height;
         this.width = width;

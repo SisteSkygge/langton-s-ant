@@ -1,4 +1,4 @@
-class Ant{
+var Ant = class{
     constructor(startX, startY, screenWidth, screenHeight){
         this.x = startX;
         this.y = startY
