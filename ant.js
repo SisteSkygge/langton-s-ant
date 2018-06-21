@@ -17,13 +17,13 @@ class Ant{
         */
         if(caseActuel==false){
             //tourne de 90° vers la gauche
-            direction += 1
-            direction %= 4;
+            this.direction += 1
+            this.direction %= 4;
         }
         else{
             //tourne de 90° vers la droite
-            direction -=1;
-            if(direction<0) direction = 3;
+            this.direction -=1;
+            if(this.direction<0) this.direction = 3;
         }
 
         if(this.direction==0) this.x +=1;
@@ -31,7 +31,7 @@ class Ant{
         if(this.direction==2) this.x -=1;
         if(this.direction==3) this.y -=1;
 
-        teleporte();
+        this.teleporte();
     }
 
     teleporte(){

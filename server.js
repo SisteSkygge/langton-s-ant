@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var serveur = require('http').createServer(app);
-var io = require('socket.io')(app);
+var io = require('socket.io')(serveur);
 
 var Ant = require('./ant.js');
 var Game = require('./game.js');
@@ -24,11 +24,12 @@ io.on('connection', function(socket){
 var game = new Game(640,640);
 var ant = new Ant(320,320,640,640);
 
-setInterval(1000/30, function(){
+setInterval(function(){
     //Fait avancer la partie
     var antPos = ant.translatePos();
     var caseColor = game.returnColor(antPos);
     ant.deplacer(caseColor);
     game.ajouterPixel(antPos);
     io.sockets.emit("ANT_M", game.getLastPixel());
-})
+    console.log(game.getLastPixel());
+}, 1000/30);

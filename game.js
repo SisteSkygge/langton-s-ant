@@ -11,7 +11,7 @@ class Game{
     }
 
     returnColor(antPos){
-        if(antPos in blackPixel) return false;
+        if(antPos in this.blackPixel) return false;
         else return true;
     }
 
@@ -25,7 +25,7 @@ class Game{
 
     getLastPixel(){
         //retourne le dernier pixel de la liste AKA le dernier rajouter
-        if(this.blackPixel.length>0) return null;
+        if(this.blackPixel.length<=0) return null;
         else return this.blackPixel[this.blackPixel.length-1];
     }
 }
