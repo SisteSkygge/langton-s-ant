@@ -2,7 +2,7 @@ class Ant{
     constructor(startX, startY, screenWidth, screenHeight){
         this.x = startX;
         this.y = startY
-        this.direction = 4;
+        this.direction = 0;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
     }
@@ -15,10 +15,11 @@ class Ant{
             caseActuel false -> case noir
             caseActuel true -> case blanche
         */
+        console.log(caseActuel);
         if(caseActuel==false){
             //tourne de 90° vers la gauche
             this.direction += 1
-            this.direction %= 4;
+            if(this.direction>3) this.direction=0;
         }
         else{
             //tourne de 90° vers la droite
@@ -27,9 +28,9 @@ class Ant{
         }
 
         if(this.direction==0) this.x +=1;
-        if(this.direction==1) this.y +=1;
+        if(this.direction==1) this.y -=1;
         if(this.direction==2) this.x -=1;
-        if(this.direction==3) this.y -=1;
+        if(this.direction==3) this.y +=1;
 
         this.teleporte();
     }

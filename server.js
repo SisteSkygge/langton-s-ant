@@ -28,14 +28,16 @@ var ant = new Ant(game.width/2,game.height/2,game.width,game.height);
 
 setInterval(function(){
     //Fait avancer la partie
-    for(var i=0;i<100;i++){
+    for(var i=0;i<1;i++){
         var antPos = ant.translatePos();
         var caseColor = game.returnColor(antPos);
         ant.deplacer(caseColor);
         game.ajouterPixel(antPos);
-        io.sockets.emit("ANT_M", game.getLastPixel());
+        io.sockets.emit("ANT_M", antPos);
+        console.log(ant.direction);
+        console.log(antPos);
     }
-}, 1000/30);
+}, 1000/1);
 
 io.on('connection', function(socket){
     socket.on('S_DATA', function(){
