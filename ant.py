@@ -32,12 +32,12 @@ class Ant(object):
     def teleport(self):
         if(self.x<0):
             self.x = self.screenWidth
-        if(self.x>self.screenWidth):
+        if(self.x>=self.screenWidth):
             self.x = 0
 
         if(self.y<0):
             self.y = self.screenHeight
-        if(self.y>self.screenHeight):
+        if(self.y>=self.screenHeight):
             self.y = 0
 
     def translatePos(self):

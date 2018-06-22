@@ -28,14 +28,12 @@ class SocketManager(Thread):
     
     def __init__(self):
         Thread.__init__(self)
-        self.client = []
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    def run(self):
-        self.socket.listen(5)
+        print('Ouverture du SocketManager')
+        print('Envoie de données...')
 
     def send_Message(self, message):
-        print(message)
+        #print(message)
         self.socket.sendto(message, ('127.0.0.1', 13355))
         
 
