@@ -13,10 +13,10 @@ class Game(object):
             self.blackPixel[antX][antY] = False
 
     def returnColor(self, x, y):
-        return self.blackPixel[antX][antY]
+        return self.blackPixel[x][y]
     
     def exportMap(self):
-        
+        return self.blackPixel.tobytes()
 
     def getSize(self):
-        pass
+        return "{},{}".format(self.width, self.height)

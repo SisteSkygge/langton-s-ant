@@ -1,15 +1,14 @@
-import numpy
+import socket
 import zlib
-a = numpy.zeros((640,640), dtype=bool)
-b = a.tobytes()
-c = zlib.compress(b)
+import pickle
+import numpy
 
-with open('dump.bin', 'wb') as file:
-    file.write(c)
-    file.close()
+serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+serverSocket.bind(('127.0.0.1', 13355))
 
-with open('dump.bin', 'rb') as file:
-    b = zlib.decompress(file.readline())
-    a = numpy.fromstring(b, bool)
-    print(a[0:10])
-    file.close()
+while(1):
+    r = serverSocket.recvfrom(2048)
+    print(r)
+    r = zlib.decompress(r)
+    a = numpy.fromstring(r, dtype=bool)
+    print(len(a))
