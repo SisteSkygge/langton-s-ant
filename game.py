@@ -1,19 +1,22 @@
-import numpy
+from numpy import zeros
 
 class Game(object):
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.blackPixel = numpy.zeros(width, height)
+        self.blackPixel = zeros((self.width, self.height), dtype=bool)
 
-    def ajouterPixel(self):
-        pass
-    
-    def returnColor(self):
-        pass
+    def ajouterPixel(self, antX, antY):
+        if(self.blackPixel[antX][antY]==False): 
+            self.blackPixel[antX][antY] = True
+        else:
+            self.blackPixel[antX][antY] = False
+
+    def returnColor(self, x, y):
+        return self.blackPixel[antX][antY]
     
     def exportMap(self):
-        pass
+        
 
     def getSize(self):
         pass

@@ -8,7 +8,7 @@ class Ant(object):
 
     def deplacer(self, caseActuel):
         
-        if(caseActuel==false):
+        if(caseActuel==False):
             self.direction +=1
             if(self.direction>3):
                 self.direction=0
