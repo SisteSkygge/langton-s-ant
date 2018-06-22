@@ -7,7 +7,7 @@ server.on('message', function(message){
     //console.log(message);
     zlib.inflate(message, function(err, data){
         if(!err){
-            console.log(data);
+            console.log(data[0]);
         }
         else console.log(err);
     });
