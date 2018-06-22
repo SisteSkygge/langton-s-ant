@@ -31,12 +31,12 @@ class Ant(object):
 
     def teleport(self):
         if(self.x<0):
-            self.x = self.screenWidth
+            self.x = self.screenWidth-1
         if(self.x>=self.screenWidth):
             self.x = 0
 
         if(self.y<0):
-            self.y = self.screenHeight
+            self.y = self.screenHeight-1
         if(self.y>=self.screenHeight):
             self.y = 0
 
