@@ -25,7 +25,7 @@ class Ant(object):
         if(self.direction==2):
             self.x -= 1
         if(self.direction==3):
-            self.y = +=1
+            self.y +=1
 
         self.teleport()
 
