@@ -1,5 +1,5 @@
 var Game = class{
-    constructor(height, width){
+    constructor(width, height){
         this.height = height;
         this.width = width;
         this.blackPixel = [];
