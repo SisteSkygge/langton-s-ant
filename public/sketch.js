@@ -19,9 +19,9 @@ function start_ant(){
     socket.on('MAP', function(message){
         zlib.inflate(message, function(err, data){
             if(!err){
-                //On recupere un buffer en hexa
-                //TODO on doit le convertir list de true et false, false = noir ; true = blanc
+                map = data;
             }
+            else console.log(err);
         });
     });
 }
@@ -39,8 +39,14 @@ function draw(){
         }
 
         background(255);
-
-        //On dessine le jeu
-        //TODO faire la boucle qui parcourt et dessine les elements de la liste
+        for(var i=0;i<map.length;i++){
+            if(map[i]==1){
+                let y = parseInt(i/size[0]);
+                let x = i%size[0];
+                fill(0);
+                stroke(0);
+                rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+            }
+        }
     }
 }
