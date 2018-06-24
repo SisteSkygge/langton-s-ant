@@ -45,10 +45,13 @@ var serveurSocket = dgram.createSocket('udp4');
 //renvoie de l'information au client
 serveurSocket.on('message', function(message){
     //console.log(message);
+    /*
     zlib.inflate(message, function(err, data){
         if(!err) io.sockets.emit('MAP', data);
         else console.log(err);
     });
+    */
+   io.sockets.emit('MAP', message);
 });
 
 serveurSocket.bind(13355);

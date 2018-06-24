@@ -22,7 +22,8 @@ class Partie(object):
         self.game.ajouterPixel(antPosX, antPosY)
 
     def send_Map(self):
-        self.socketManager.send_Message(zlib.compress(self.game.blackPixel.tobytes(), 9))
+        #self.socketManager.send_Message(zlib.compress(self.game.blackPixel.tobytes(), 9))
+        self.socketManager.send_Message(self.game.blackPixel.tobytes())
 
 class SocketManager(Thread):
     
