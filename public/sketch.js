@@ -13,16 +13,12 @@ function start_ant(){
     //Envoie un signal au serveur pour lui dire d'envoyer la carte du jeu et les actions de la fourmis et active la boucle principale
     socket.emit('S_SIZE');
     socket.on('R_SIZE', function(message){
-        size.push(message.split(',')[0]);
-        size.push(message.split(',')[1]);
+        size=[message.split(',')[0], message.split(',')[1]];
     });
     socket.on('MAP', function(message){
-        zlib.inflate(message, function(err, data){
-            if(!err){
-                map = data;
-            }
-            else console.log(err);
-        });
+        //console.log(message);
+        map = new Uint8Array(message);
+        console.log(map);
     });
 }
 
@@ -37,7 +33,7 @@ function draw(){
             createCanvas(size[0]*cote, size[1]*cote);
             sizeSetup=true;
         }
-
+        console.log(map[0]);
         background(255);
         for(var i=0;i<map.length;i++){
             if(map[i]==1){
