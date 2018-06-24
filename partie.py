@@ -41,7 +41,7 @@ class SocketManager(Thread):
 #Programme principal
 
 partie = Partie(SocketManager())
-delay = 1/60
+delay = 1/250
 
 while(1):
     partie.nextMove()

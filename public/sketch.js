@@ -18,7 +18,7 @@ function start_ant(){
     socket.on('MAP', function(message){
         //console.log(message);
         map = new Uint8Array(message);
-        console.log(map);
+        //console.log(map);
     });
 }
 
@@ -33,7 +33,7 @@ function draw(){
             createCanvas(size[0]*cote, size[1]*cote);
             sizeSetup=true;
         }
-        console.log(map[0]);
+        //console.log(map[0]);
         background(255);
         for(var i=0;i<map.length;i++){
             if(map[i]==1){
