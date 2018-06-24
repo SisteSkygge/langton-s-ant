@@ -23,12 +23,12 @@ serveur.listen(8080);
 
 io.on('connection', function(socket){
     socket.on('S_SIZE', function(){
-        console.log(`${socket.request.connection.remoteAddress.substr(0,7)} connect`);
+        console.log(`${socket.request.connection.remoteAddress.substr(7)} connect`);
         socket.emit("R_SIZE", `${100},${100}`);
     });
 
     socket.on('disconnect', function(){
-        console.log(`${socket.request.connection.remoteAddress.substr(0,7)} disconnect`);
+        console.log(`${socket.request.connection.remoteAddress.substr(7)} disconnect`);
     });
 });
 
