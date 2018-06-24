@@ -7,7 +7,7 @@ var sizeSetup = false;
 
 var offsetX = 0;
 var offsetY = 0;
-var cote = 10;
+var cote = 5;
 
 function start_ant(){
     //Envoie un signal au serveur pour lui dire d'envoyer la carte du jeu et les actions de la fourmis et active la boucle principale

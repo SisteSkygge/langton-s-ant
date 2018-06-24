@@ -7,8 +7,8 @@ import zlib
 
 class Partie(object):
     def __init__(self, socketManager):
-        self.width = 100
-        self.height = 100
+        self.width = 200
+        self.height = 200
         self.game = Game(self.width, self.height)
         self.ant = Ant(int(self.width/2), int(self.height/2), self.width, self.height)
         self.socketManager = socketManager
