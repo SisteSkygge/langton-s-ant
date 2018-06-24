@@ -5,6 +5,8 @@ var io = require('socket.io')(serveur);
 var zlib = require('zlib');
 var dgram = require('dgram');
 
+var clientConnected = 0;
+
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
@@ -25,10 +27,14 @@ io.on('connection', function(socket){
     socket.on('S_SIZE', function(){
         console.log(`${socket.request.connection.remoteAddress.substr(7)} connect`);
         socket.emit("R_SIZE", `${200},${200}`);
+        clientConnected++;
+        console.log(`Client connecte : ${clientConnected}`);
     });
 
     socket.on('disconnect', function(){
         console.log(`${socket.request.connection.remoteAddress.substr(7)} disconnect`);
+        clientConnected--;
+        console.log(`Client connecte : ${clientConnected}`);
     });
 });
 
