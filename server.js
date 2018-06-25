@@ -6,6 +6,8 @@ var zlib = require('zlib');
 var dgram = require('dgram');
 
 var clientConnected = 0;
+var dataDelay = 1000/30;
+var dataSend = false;
 
 app.use(express.static('public'));
 
@@ -43,17 +45,23 @@ io.on('connection', function(socket){
 var serveurSocket = dgram.createSocket('udp4');
 
 //renvoie de l'information au client
-serveurSocket.on('message', function(message){
-    //console.log(message);
-    /*
-    zlib.inflate(message, function(err, data){
-        if(!err) io.sockets.emit('MAP', data);
-        else console.log(err);
-    });
-    */
-   io.sockets.emit('MAP', message);
-});
+if(dataSend==false){
+   serveurSocket.on('message', function(message){
+       //console.log(message);
+       /*
+       zlib.inflate(message, function(err, data){
+           if(!err) io.sockets.emit('MAP', data);
+           else console.log(err);
+       });
+       */
+       io.sockets.emit('MAP', message);
+       dataSend=true;
+   });
+}
 
+setInterval(function(){
+    dataSend = false;
+}, dataDelay);
 serveurSocket.bind(13355);
 
 
