@@ -31,6 +31,12 @@ function mapDiff(previousMap, map){
     return diff;
 }
 
+function roundCoordinate(value){
+    if(value%cote<cote/2) value -= value%cote;
+    else value += cote-value%cote;
+    return value;
+}
+
 function setup(){
     frameRate(60);
 }
@@ -60,9 +66,9 @@ function draw(){
             let difference = mapDiff(previousMap, map);
             for(var i=0;i<difference.length;i++){
 
-                let y = parseInt(difference[i]/size[0]);
-                let x = difference[i]%size[0];
-                console.log(`x : ${x}, y : ${y}`);
+                let y = roundCoordinate(parseInt(difference[i]/size[0]));
+                let x = roundCoordinate(difference[i]%size[0]);
+                //console.log(`x : ${x}, y : ${y}`);
 
                 if(map[difference[i]]==1){
                     //Noir
