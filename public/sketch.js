@@ -66,14 +66,13 @@ function draw(){
 
                 if(map[difference[i]]==1){
                     //Noir
+                    noStroke();
                     fill(0);
-                    stroke(0);
                 }
                 else{
                     //blanc
+                    noStroke();
                     fill(255);
-                    stroke(255);
-                    
                 }
                 rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
             }
