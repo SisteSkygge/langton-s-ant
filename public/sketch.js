@@ -72,7 +72,7 @@ function draw(){
                 else{
                     //blanc
                     fill(255)
-                    stroke(255)
+                    stroke(0)
                     
                 }
                 rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
