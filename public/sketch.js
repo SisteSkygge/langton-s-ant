@@ -36,6 +36,7 @@ function setup(){
 }
 
 function draw(){
+    strokeWeight(0);
     if(map!==undefined && size.length!=0){
         //init du canvas comme nous avons recu les informations du jeu
         if(sizeSetup==false){
@@ -50,7 +51,6 @@ function draw(){
                     let y = parseInt(i/size[0]);
                     let x = i%size[0];
                     fill(0);
-                    noStroke();
                     rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
                 }
             }
@@ -66,12 +66,10 @@ function draw(){
 
                 if(map[difference[i]]==1){
                     //Noir
-                    noStroke();
                     fill(0);
                 }
                 else{
                     //blanc
-                    noStroke();
                     fill(255);
                 }
                 rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
