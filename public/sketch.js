@@ -62,6 +62,7 @@ function draw(){
 
                 let y = parseInt(difference[i]/size[0]);
                 let x = difference[i]%size[0];
+                console.log(`x : ${x}, y : ${y}`);
 
                 if(map[difference[i]]==1){
                     //Noir
