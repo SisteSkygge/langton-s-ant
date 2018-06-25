@@ -68,14 +68,14 @@ function draw(){
                     //Noir
                     fill(0)
                     stroke(0)
-                    rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
                 }
                 else{
                     //blanc
                     fill(255)
                     stroke(255)
-                    rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+                    
                 }
+                rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
             }
         }
         previousMap = map;
