@@ -8,7 +8,7 @@ var sizeSetup = false;
 
 var offsetX = 0;
 var offsetY = 0;
-var cote = 5;
+var cote = 5+2;
 
 function start_ant(){
     //Envoie un signal au serveur pour lui dire d'envoyer la carte du jeu et les actions de la fourmis et active la boucle principale
@@ -50,7 +50,7 @@ function draw(){
                     let y = parseInt(i/size[0]);
                     let x = i%size[0];
                     fill(0);
-                    stroke(0);
+                    noStroke();
                     rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
                 }
             }
