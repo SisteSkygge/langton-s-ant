@@ -1,5 +1,6 @@
 var debut = false;
 var map;
+var previousMap;
 var size = [];
 const socket = io.connect('http://176.143.194.216:8080');
 
@@ -22,6 +23,14 @@ function start_ant(){
     });
 }
 
+function mapDiff(previousMap, map){
+    let diff = [];
+    for(var i=0;i<map.length;i++){
+        if(previousMap[i]!=map[i]) diff.push(i);
+    }
+    return diff;
+}
+
 function setup(){
     frameRate(60);
 }
@@ -33,16 +42,41 @@ function draw(){
             createCanvas(size[0]*cote, size[1]*cote);
             sizeSetup=true;
         }
-        //console.log(map[0]);
-        background(255);
-        for(var i=0;i<map.length;i++){
-            if(map[i]==1){
+        if(previousMap===undefined && map!==undefined){
+            //On dessine toutes les cases
+            background(255);
+            for(var i=0;i<map.length;i++){
+                if(map[i]==1){
+                    let y = parseInt(i/size[0]);
+                    let x = i%size[0];
+                    fill(0);
+                    stroke(0);
+                    rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+                }
+            }
+            
+        }
+        else{
+            let difference = mapDiff(previousMap, map);
+            for(var i=0;i<difference.length;i++){
+
                 let y = parseInt(i/size[0]);
                 let x = i%size[0];
-                fill(0);
-                stroke(0);
-                rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+
+                if(map[difference[i]]==1){
+                    //Noir
+                    fill(0)
+                    stroke(0)
+                    rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+                }
+                else{
+                    //blanc
+                    fill(255)
+                    stroke(255)
+                    rect(offsetX+x*cote, offsetY+y*cote, cote, cote);
+                }
             }
         }
+        previousMap = map;
     }
 }
