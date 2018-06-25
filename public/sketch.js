@@ -60,8 +60,8 @@ function draw(){
             let difference = mapDiff(previousMap, map);
             for(var i=0;i<difference.length;i++){
 
-                let y = parseInt(i/size[0]);
-                let x = i%size[0];
+                let y = parseInt(difference[i]/size[0]);
+                let x = difference[i]%size[0];
 
                 if(map[difference[i]]==1){
                     //Noir
