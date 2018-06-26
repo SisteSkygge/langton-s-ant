@@ -35,7 +35,7 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log(`${socket.request.connection.remoteAddress.substr(7)} disconnect`);
         clientConnected--;
-        console.log(`Client connecte : ${clientConnected}`);
+        console.log(`Client deconnecte : ${clientConnected}`);
     });
 });
 
