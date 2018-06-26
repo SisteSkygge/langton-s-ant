@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 app.get('/', function(req, res){
     res.status(200);
-    res.set({'Content-type':'text/plain'});
+    res.set({'Content-type':'text/html'});
     res.sendFile(__dirname+"/public/index.html");
 });
 
