@@ -2,7 +2,8 @@
 
 Installation
 
-Il n'y aucune dépendance à télécharger elles sont toutes présentes dans le dossier.
+Télécharger les dépendances : 
+  npm install
 
 Pour l'adapter à son serveur il faut:
   Modifier l'adresse de connexion de sketch.js au début du fichier
