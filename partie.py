@@ -3,7 +3,8 @@ from ant import *
 import time
 from threading import Thread
 import socket
-import zlib
+
+delay = 1/250
 
 class Partie(object):
     def __init__(self, socketManager):
@@ -23,26 +24,35 @@ class Partie(object):
 
     def send_Map(self):
         #self.socketManager.send_Message(zlib.compress(self.game.blackPixel.tobytes(), 9))
-        self.socketManager.send_Message(self.game.blackPixel.tobytes())
+        self.socketManager.add_queue(self.game.blackPixel.tobytes())
 
 class SocketManager(Thread):
     
     def __init__(self):
         Thread.__init__(self)
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.queue = []
         print('Ouverture du SocketManager')
         print('Envoie de données...')
+
+    def run(self):
+        while(1):
+            if(len(self.queue)>0):
+                self.send_Message(self.queue[0])
+                del self.queue[0]
+                time.sleep(delay)
 
     def send_Message(self, message):
         #print(message)
         self.socket.sendto(message, ('127.0.0.1', 13355))
+
+    def add_queue(self, message):
+        self.queue.append(message)
         
 
 #Programme principal
 
 partie = Partie(SocketManager())
-delay = 1/250
-
 while(1):
     partie.nextMove()
     partie.send_Map()
