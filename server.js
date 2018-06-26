@@ -2,12 +2,11 @@ var express = require('express');
 var app = express();
 var serveur = require('http').createServer(app);
 var io = require('socket.io')(serveur);
-var zlib = require('zlib');
 var dgram = require('dgram');
 
 var clientConnected = 0;
 var dataDelay = 1000/30;
-var dataSend = false;
+var messageStock;
 
 app.use(express.static('public'));
 
@@ -45,22 +44,12 @@ io.on('connection', function(socket){
 var serveurSocket = dgram.createSocket('udp4');
 
 //renvoie de l'information au client
-if(dataSend==false){
-   serveurSocket.on('message', function(message){
-       //console.log(message);
-       /*
-       zlib.inflate(message, function(err, data){
-           if(!err) io.sockets.emit('MAP', data);
-           else console.log(err);
-       });
-       */
-       io.sockets.emit('MAP', message);
-       dataSend=true;
-   });
-}
+serveurSocket.on('message', function(message){
+    messageStock = message;
+});
 
 setInterval(function(){
-    dataSend = false;
+    if(messageStock!==undefined) io.sockets.emit('MAP', messageStock);
 }, dataDelay);
 serveurSocket.bind(13355);
 
